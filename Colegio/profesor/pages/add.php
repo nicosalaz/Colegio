@@ -1,8 +1,12 @@
 <?php 
     require_once '../../genero/modelos/Genero.php';
+    require_once '../../curso/modelos/Curso.php';
+
 
     $obj_genero = new Genero();
-    $datos = $obj_genero->get();
+    $obj_curso = new Curso();
+    $datos_genero = $obj_genero->get();
+    $datos_curso = $obj_curso->get_curso();
 ?>
 
 <!DOCTYPE html>
@@ -29,13 +33,28 @@
             <select name="genero" id="genero" class="form-select">
                 <option value="" selected></option>
                 <?php 
-                    foreach ($datos as $dato) {
+                    foreach ($datos_genero as $dato_genero) {
                 ?>
-                <option value="<?php echo $dato['ID_GENERO']; ?>"><?php echo $dato['TIPO_GENERO']; ?></option>
+                <option value="<?php echo $dato_genero['ID_GENERO']; ?>"><?php echo $dato_genero['TIPO_GENERO']; ?></option>
                 <?php 
                     }
                 ?>
             </select>
+            <label for="cod" class="form-label">Código de profesor</label>
+            <input class="form-control" name="cod" required></input>
+            <label for="curso" class="form-label">Curso</label>
+            <select name="curso" id="curso" class="form-select">
+                <option value="" selected></option>
+                <?php 
+                    foreach ($datos_curso as $dato_curso) {
+                ?>
+                <option value="<?php echo $dato_curso['ID_CURSO']; ?>"><?php echo $dato_curso['NOMBRE_CURSO']; ?></option>
+                <?php 
+                    }
+                ?>
+            </select>
+            <button class="btn btn-outline-warning"><a href="../../curso/pages/add.php" style="text-decoration: none;color: black;">Agregar curso</a></button>
+            <br>
             <br>
             <input type="submit" class="btn btn-primary">
             <input type="reset" value="Borrar" class="btn btn-danger">
