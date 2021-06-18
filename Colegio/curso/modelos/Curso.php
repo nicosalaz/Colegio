@@ -40,6 +40,17 @@
 			$query = $this->db->prepare($sql);
 			$query->execute(array(':id_curso'=>$id_curso));
 		}
+		public function get_cursos_disponibles()
+		{
+			$sql = "SELECT ID_CURSO,NOMBRE_CURSO
+					FROM curso
+					WHERE ID_CURSO NOT IN (SELECT CURSO_ID
+						  					FROM profesor)";
+			$query = $this->db->prepare($sql);
+			$query->execute();
+			$datos = $query->fetchAll();
+			return $datos;
+		}
 	}
 
 

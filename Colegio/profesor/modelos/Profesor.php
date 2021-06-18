@@ -11,7 +11,7 @@
         {
             $sql = "INSERT INTO profesor(NOMBRE, APELLIDOS, IDENTIFICACION, GENERO_ID, COD_DOCENTE,
                      CURSO_ID, MATERIA_ID, USER_ID) 
-                    VALUES (:nombre,:apellido,:identificacion,genero,cod_profesor,:curso_id,:materia_id,:user_id)";
+                    VALUES (:nombre,:apellido,:identificacion,:genero,:cod_profesor,:curso_id,:materia_id,:user_id)";
             $query = $this->db->prepare($sql);
             $query->execute(array(':nombre'=>$nombre,
                                   ':apellido'=>$apellido,
@@ -39,7 +39,5 @@
                                   ':user_id'=>$user_id));
         }
     }
-
-    
 
 ?>
