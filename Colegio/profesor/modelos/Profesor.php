@@ -38,6 +38,49 @@
                                   ':materia_id'=>$materia_id,
                                   ':user_id'=>$user_id));
         }
+
+        public function getProfesor()
+        {
+            $sql = "SELECT ID_PROFESOR,NOMBRE,APELLIDOS,IDENTIFICACION,COD_DOCENTE,m.NOMBRE_MATERIA as nom_mat,u.USER as us, c.NOMBRE_CURSO as nom_curso
+                    FROM profesor p, materia m, usuario u, curso c
+                    WHERE p.MATERIA_ID = m.ID_MATERIA
+                    AND p.USER_ID = u.ID_USER
+                    AND p.CURSO_ID = c.ID_CURSO";
+            $query = $this->db->prepare($sql);
+            $query->execute();
+            $datos = $query->fetchAll();
+            return $datos;
+        }
+        public function getByID($id_profesor)
+        {
+            $sql = "SELECT ID_PROFESOR,NOMBRE,APELLIDOS,IDENTIFICACION,COD_DOCENTE,m.NOMBRE_MATERIA as nom_mat,u.USER as us, c.NOMBRE_CURSO as nom_curso
+                    FROM profesor p, materia m, usuario u, curso c
+                    WHERE p.MATERIA_ID = m.ID_MATERIA
+                    AND p.USER_ID = u.ID_USER
+                    AND p.CURSO_ID = c.ID_CURSO
+                    and p.ID_PROFESOR = :id_profesor";
+            $query = $this->db->prepare($sql);
+            $query->execute(array(":id_profesor" => $id_profesor));
+            $datos = $query->fetchAll();
+            return $datos;
+        }
+        public function edit($nombre,$apellido,$identificacion,$id_profesor)
+        {
+            $sql = "UPDATE profesor SET NOMBRE=:nombre,APELLIDOS=:apellido,IDENTIFICACION=:identificacion 
+                    WHERE ID_PROFESOR=:id_profesor";
+            $query = $this->db->prepare($sql);
+            $query->execute(array(":nombre" => $nombre,
+                                  ":apellido" => $apellido,
+                                  ":identificacion" => $identificacion,
+                                  ":id_profesor" => $id_profesor));
+        }
+        public function delete($id_profesor)
+        {
+            $sql = "DELETE FROM profesor WHERE ID_PROFESOR=:id_profesor";
+            $query = $this->db->prepare($sql);
+            $query->execute(array(":id_profesor" => $id_profesor));
+        }
+
     }
 
 ?>

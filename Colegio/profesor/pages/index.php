@@ -1,3 +1,11 @@
+<?php
+  require_once '../modelos/Profesor.php';
+
+  $obj_profesor = new Profesor();
+  $datos = $obj_profesor->getProfesor();
+  $conta = 1;
+?>
+
 <!DOCTYPE html>
  <html>
  <head>
@@ -34,5 +42,42 @@
       </div>
     </div>
   </header>
+
+  <table class="table table-hover ">
+ 		<thead>
+		    <tr>
+		      <th scope="col">#</th>
+		      <th scope="col">NOMBRE</th>
+		      <th scope="col">IDENTIFICACION</th>
+          <th scope="col">CÓDIGO DE DOCENTE</th>
+          <th scope="col">TITULAR DE CURSO</th>
+          <th scope="col">MATERIA TITULAR</th>
+          <th scope="col">USUARIO</th>
+          <th scope="col"></th>
+		    </tr>
+	  </thead>
+	  <tbody>
+	  <?php 
+	  	foreach ($datos as $dato) {
+	  ?>
+	    <tr>
+	      <th scope="row"><?php echo $conta; ?></th>
+	      <td><?php echo $dato['NOMBRE']." ".$dato['APELLIDOS']; ?></td>
+        <td><?php echo $dato['IDENTIFICACION'] ?></td>
+        <td><?php echo $dato['COD_DOCENTE'] ?></td>
+        <td><?php echo $dato['nom_curso']?></td>
+        <td><?php echo $dato['nom_mat']?></td>
+        <td><?php echo $dato['us'] ?></td>
+	      <td><button class="btn btn-warning"><a href="edit.php?id_profesor=<?php echo $dato['ID_PROFESOR'] ?>" style="text-decoration: none;color: black;">Editar</a></button>
+        <button class="btn btn-danger"><a href="delete.php?id_profesor=<?php echo $dato['ID_PROFESOR'] ?>" style="text-decoration: none;color: black;">Eliminar</a></button>
+	      </td>
+	    </tr>
+		<?php $conta++; } ?>
+	  </tbody>
+ 	</table>
+ 		
+ 	<button class="btn btn-outline-secondary"><a href="add.php" style="text-decoration: none;color: black;">Agregar Profesor</a></button>
+
+
  </body>
  </html>

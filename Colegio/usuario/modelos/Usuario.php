@@ -23,6 +23,12 @@
             $datos = $query->fetchAll();
             return $datos;
         }
+        public function delete($id)
+        {
+            $sql = "DELETE FROM usuario WHERE ID_USER=:id";
+            $query = $this->db->prepare($sql);
+            $query->execute(array(":id" => $id));
+        }
     }
     
 ?>
