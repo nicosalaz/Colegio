@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-06-2021 a las 01:09:38
--- Versión del servidor: 10.4.17-MariaDB
--- Versión de PHP: 7.4.13
+-- Tiempo de generación: 16-07-2021 a las 03:49:30
+-- Versión del servidor: 10.4.19-MariaDB
+-- Versión de PHP: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,6 +31,14 @@ CREATE TABLE `curso` (
   `ID_CURSO` int(11) NOT NULL,
   `NOMBRE_CURSO` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `curso`
+--
+
+INSERT INTO `curso` (`ID_CURSO`, `NOMBRE_CURSO`) VALUES
+(3, '8-B'),
+(4, '10-B');
 
 -- --------------------------------------------------------
 
@@ -61,6 +69,14 @@ CREATE TABLE `genero` (
   `TIPO_GENERO` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `genero`
+--
+
+INSERT INTO `genero` (`ID_GENERO`, `TIPO_GENERO`) VALUES
+(1, 'MASCULINO'),
+(2, 'FEMENINO');
+
 -- --------------------------------------------------------
 
 --
@@ -89,6 +105,13 @@ CREATE TABLE `materia` (
   `COD_MATERIA` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `materia`
+--
+
+INSERT INTO `materia` (`ID_MATERIA`, `NOMBRE_MATERIA`, `COD_MATERIA`) VALUES
+(3, 'Biologia', 'B654');
+
 -- --------------------------------------------------------
 
 --
@@ -116,7 +139,8 @@ CREATE TABLE `profesor` (
 CREATE TABLE `usuario` (
   `ID_USER` int(11) NOT NULL,
   `USER` varchar(10) NOT NULL,
-  `PASSWORD` varchar(20) NOT NULL
+  `PASSWORD` varchar(20) NOT NULL,
+  `TIPO_USUARIO` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -182,31 +206,31 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `ID_CURSO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_CURSO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `genero`
 --
 ALTER TABLE `genero`
-  MODIFY `ID_GENERO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_GENERO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `materia`
 --
 ALTER TABLE `materia`
-  MODIFY `ID_MATERIA` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_MATERIA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `profesor`
 --
 ALTER TABLE `profesor`
-  MODIFY `ID_PROFESOR` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_PROFESOR` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `ID_USER` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_USER` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restricciones para tablas volcadas

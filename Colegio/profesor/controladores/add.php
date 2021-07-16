@@ -15,7 +15,7 @@
     $user = $_POST['user'];
     $pass = $_POST['pass'];
     if ($_POST) {
-        $obj_user->add($user,$pass);
+        $obj_user->add($user,$pass,"Profesor");
         $datos = $obj_user->get_byUser($user);
         foreach ($datos as $dato) {
             $id_user = $dato['ID_USER'];

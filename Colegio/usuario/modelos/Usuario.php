@@ -7,12 +7,13 @@
         public function __construct() {
             $this->db = parent::__construct();
         }
-        public function add($user,$pass)
+        public function add($user,$pass,$tipo_user)
         {
-            $sql = "INSERT INTO usuario(USER, PASSWORD) VALUES (:user,:pass)";
+            $sql = "INSERT INTO usuario(USER, PASSWORD,TIPO_USUARIO) VALUES (:user,:pass,:tipo_user)";
             $query = $this->db->prepare($sql);
             $query->execute(array(':user'=>$user,
-                                  ':pass'=>$pass));
+                                  ':pass'=>$pass,
+                                  ':tipo_user'=>$tipo_user));
         }
         public function get_byUser($user)
         {
