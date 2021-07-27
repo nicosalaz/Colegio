@@ -7,6 +7,6 @@
     <title>index</title>
 </head>
 <body>
-    <h1 class="text-uppercase">bienvenido profesor</h1>
+    <h1 class="text-uppercase">bienvenido admin</h1>
 </body>
 </html>

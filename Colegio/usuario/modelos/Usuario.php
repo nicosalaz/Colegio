@@ -29,6 +29,30 @@
             $query = $this->db->prepare($sql);
             $query->execute(array(":id" => $id));
         }
+        public function inicio_sesion($user,$pass)
+        {
+            $sql = "SELECT count(*) as conteo
+                    FROM usuario
+                    WHERE USER = :user
+                    AND PASSWORD = :pass";
+            $query = $this->db->prepare($sql);
+            $query->execute(array(":user"=>$user,
+                                  ":pass"=>$pass));
+            $datos = $query->fetchAll();
+            return $datos;
+        }
+        public function get_tipo_user($user,$pass)
+        {
+            $sql = "SELECT TIPO_USUARIO
+                    FROM usuario
+                    WHERE USER = :user
+                    AND PASSWORD = :pass";
+            $query = $this->db->prepare($sql);
+            $query->execute(array(":user"=>$user,
+                                  ":pass"=>$pass));
+            $datos = $query->fetchAll();
+            return $datos;
+        }
     }
     
 ?>
